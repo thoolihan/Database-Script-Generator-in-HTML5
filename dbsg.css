@@ -1,0 +1,21 @@
+* {
+   font-family: Verdana;
+   font-size: 0.925em;
+}
+
+fieldset {
+    margin: 1.5em;
+    max-width: 1000px;
+}
+
+#results {
+    overflow-y: scroll;
+    margin: 1.5em;
+    width: 95%;
+    max-height: 500px;
+    padding: 1em;
+    font-family: Consolas, "Courier New", Courier, Verdana;
+    border: 1px solid #999;
+}
+
+.hidden { display: none; }

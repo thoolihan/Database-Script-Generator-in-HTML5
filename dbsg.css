@@ -18,4 +18,17 @@ fieldset {
     border: 1px solid #999;
 }
 
+table {
+    border-collapse: collapse;
+    margin: .75em;
+}
+
+table, tr, td, thead, th {
+    border: 1px solid #999;
+}
+
+tr:nth-child(even) {background: #eee;}
+
+td, th { padding: .4em; }
+
 .hidden { display: none; }

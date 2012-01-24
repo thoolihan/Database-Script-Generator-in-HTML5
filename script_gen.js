@@ -8,6 +8,7 @@ $(document).ready(function() {
             foreign_key: $('#foreign_key_constraint').val()
         };
         $('#foreign_key_template').tmpl(key_data).appendTo('#foreign_keys');
+        $('#foreign_keys').removeClass('hidden');
     });
 
     $('input#generate_script').click(function(){
@@ -15,13 +16,14 @@ $(document).ready(function() {
             table: $('#table_name').val(),
             foreign_keys: []
         };
-        $('#foreign_keys li').each(function(index) {
+        $('#foreign_keys tr.fk').each(function(index) {
             var fk_constraint = {
                 table: $(this).children('.table').first().html(),
                 constraint: $(this).children('.foreign_key').first().html()
             };
             script_data.foreign_keys.push(fk_constraint);
         });
+        $('#results').html('');
         $('#script_template').tmpl(script_data).appendTo('#results');
         $('#results').removeClass('hidden');
     });

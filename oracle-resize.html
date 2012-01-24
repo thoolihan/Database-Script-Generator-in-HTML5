@@ -1,12 +1,12 @@
 <!doctype html>
 <html>
   <head>
-    <title>Oracle Downsize Script Generator</title>
+    <title>Oracle Downsize Script Generator (fix for ORA-01440)</title>
     <link type="text/css" rel="stylesheet" href="dbsg.css" media="all">
     <meta name="viewport" content="width=device-width">
   </head>
   <body>
-    <h1>Oracle Downsize Non-Empty Column</h1>
+    <h1>Oracle Downsize Script Generator (fix for ORA-01440)</h1>
     <fieldset>
         <legend>Table Info</legend>
 
@@ -61,7 +61,7 @@ alter table ${table} disable all triggers;<br>
 {{each foreign_keys}}alter table ${$value.table} disable constraint ${$value.constraint};<br>{{/each}}
 <br>
 --backup data as a temp table<br>
-create table ${table}-temp-backup as select * from ${table};<br>
+create table ${table}_temp as select * from ${table};<br>
 <br>
 --truncate the table<br>
 truncate table ${table};<br>
@@ -71,7 +71,7 @@ alter table ${table} modify (<br>
 );<br>
 <br>
 --restore records from temp table<br>
-insert into ${table} select * from ${table}-temp-backup;<br>
+insert into ${table} select * from ${table}_temp;<br>
 <br>
 --enable all foreign keys<br>
 {{each foreign_keys}}alter table ${$value.table} enable validate constraint ${$value.constraint};<br>{{/each}}
